@@ -5,7 +5,7 @@ namespace Online_Car_Rental_System.Models
     public class Car
     {
         [Key]
-        public int Id { get; set; } // Unique identifier for each car
+        public int CarId { get; set; } // Unique identifier for each car
         public string Type { get; set; } // Type of the car (e.g., SUV, Sedan)
         public string Brand { get; set; } // Brand of the car (e.g., Toyota, Honda)
         public string CarModel { get; set; } // Model of the car (e.g., RAV4, Accord)
