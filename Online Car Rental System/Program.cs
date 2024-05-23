@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Online_Car_Rental_System.Data;
+using Online_Car_Rental_System.Services;
+using Online_Car_Rental_System.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +9,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options=> 
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+//Register Application Services
+builder.Services.AddScoped<ICarService, CarService>();
+builder.Services.AddScoped<IReservationService, ReservationService>();
+//builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddSingleton<CarJsonService>();
+
 
 var app = builder.Build();
 
