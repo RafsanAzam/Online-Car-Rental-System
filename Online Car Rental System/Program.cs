@@ -13,7 +13,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options=>
 //Register Application Services
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IReservationService, ReservationService>();
-//builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddSingleton<CarJsonService>();
 
 
