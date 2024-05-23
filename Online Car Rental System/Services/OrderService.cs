@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Online_Car_Rental_System.Data;
 using Online_Car_Rental_System.Models;
+using Online_Car_Rental_System.Services.Interfaces;
 
 namespace Online_Car_Rental_System.Services
 {
-    public class OrderService
+    public class OrderService : IOrderService
     {
         private readonly ApplicationDbContext _context;
         private readonly CarJsonService _carJsonService;
