@@ -70,6 +70,45 @@ namespace Online_Car_Rental_System.Services
                 .Where(c=> c.Brand.Equals(Brand, System.StringComparison.OrdinalIgnoreCase))
                 .ToList();
         }
+
+        public void updateCarTableFromJson()
+        {
+            try
+            {
+                var carsFromJson = _carJsonService.ReadJsonFile();
+                foreach(var car in carsFromJson)
+                {
+                    var existingCar = _context.Cars.FirstOrDefault(c =>c.CarId == car.CarId);
+                    if(existingCar != null)
+                    {
+                        //Update existing car
+                        existingCar.Type = car.Type;
+                        existingCar.Brand = car.Brand;
+                        existingCar.CarModel = car.CarModel;
+                        existingCar.Image = car.Image;
+                        existingCar.Mileage = car.Mileage;
+                        existingCar.FuelType = car.FuelType;
+                        existingCar.Seats = car.Seats;
+                        existingCar.Quantity = car.Quantity;
+                        existingCar.PricePerDay = car.PricePerDay;
+                        existingCar.Description = car.Description;
+                        existingCar.Availability = car.Availability;
+                    }
+
+                    else
+                    {
+                        // Add new car
+                        _context.Cars.Add(car);
+                    }
+                }
+                _context.SaveChanges();
+            }
+
+            catch (Exception ex) 
+            {
+                throw new Exception("Error updating car table from json file.", ex);
+            }
+        }
         
     }
 }
