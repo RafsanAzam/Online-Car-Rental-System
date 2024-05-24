@@ -4,6 +4,7 @@
 
 
 <!-- Banner Section -->
+@*
 <section class="banner-section">
     <div class="banner-image">
         <div class="banner-content">
@@ -12,4 +13,28 @@
             <a href="@Url.Action("Index", "Home")" class="btn btn-primary">About Us</a>
         </div>
     </div>
-</section>
+</section>*@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Start Header Section -->
+<header>
+    <div class="container header-container">
+        <div class="header-left">
+            <h1>Car Dealing Experience.</h1>
+            <h3>Refined!</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis est illo nisi magni ea distinctio ab quibusdam rem qui ex? Quisquam ipsum quaerat sint eos alias rem sequi repellendus culpa?
+            </p>
+            <a href="@Url.Action("ExploreCars", "Home")" class="btn">Explore Cars</a>
+        </div>
+        <div class="header-right">
+            <div class="sq-box">
+                <img src="~/images/Banner.jpg" alt="Car Image">
+            </div>
+        </div>
+    </div>
+    <div class="sq-box2"></div>
+    </header>
+<!-- End Header Section -->
