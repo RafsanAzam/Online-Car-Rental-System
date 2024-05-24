@@ -13,5 +13,8 @@ namespace Online_Car_Rental_System.Services.Interfaces
         List<Car> GetCarsByCategory(string category);
         List<Car> GetCarsByBrand(string brand);
 
+        // Method to update car table from json file
+        void updateCarTableFromJson();
+
     }
 }
