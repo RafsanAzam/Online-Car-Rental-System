@@ -5,7 +5,12 @@ namespace Online_Car_Rental_System.Services
 {
     public class CarJsonService
     {
-        private readonly string _filePath = "Online Car Rental System/cars.json";
+        private readonly string _filePath;
+
+        public CarJsonService()
+        {
+            _filePath = Path.Combine(Directory.GetCurrentDirectory(), "Data", "cars.json");
+        }
 
         public List<Car> ReadJsonFile()
         {
