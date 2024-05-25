@@ -17,7 +17,7 @@
 .banner-content {
     justify-content: center;
     padding-left: 100px;
-}
+} 
 
     .banner-content h4 {
         float: left;
@@ -188,7 +188,7 @@ header {
     .header-left h1 {
         font-size: 54px;
         line-height: 1.2;
-        color: var (--color-black);
+        color: var(--color-black);
         animation: H1Ani forwards 1s ease;
         opacity: 0;
         animation-delay: 1s;
