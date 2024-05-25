@@ -61,7 +61,7 @@
 }
 
 :root {
-    --color-primary: #1743e3;
+    --color-primary: #15A3C7;
     --color-white: #eaeaea;
     --color-dark: #333;
     --color-black: #222;
@@ -241,7 +241,7 @@ header {
     right: -7%;
 }
 
-.sq-box {
+/*.sq-box {
     height: 100%;
     width: 100%;
     border: 25px solid var(--color-primary);
@@ -250,7 +250,7 @@ header {
     opacity: 0;
     animation: zoomOut 1s ease forwards;
     animation-delay: 1.3s;
-}
+}*/
 
     .sq-box img {
         position: absolute;
@@ -263,7 +263,7 @@ header {
         animation-delay: 1.6s;
     }
 
-.sq-box2 {
+/*.sq-box2 {
     position: absolute;
     width: 700px;
     height: 700px;
@@ -275,7 +275,7 @@ header {
     opacity: 0;
     animation: sqbox2Ani forwards 1s ease;
     animation-delay: .3s;
-}
+}*/
 
 /* End Header Section */
 
