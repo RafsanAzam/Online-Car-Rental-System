@@ -20,12 +20,12 @@ builder.Services.AddSingleton<CarJsonService>();
 var app = builder.Build();
 
 
-/*Update Car table from JSON file during startup
+//Update Car table from JSON file during startup
 using (var scope = app.Services.CreateScope())
 {
     var carService = scope.ServiceProvider.GetRequiredService<ICarService>();
     carService.updateCarTableFromJson();
-}*/
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
