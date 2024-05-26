@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Online_Car_Rental_System.Models.Car>
+<h1>Available Cars</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Mileage</th>
+            <th>Fuel Type</th>
+            <th>Seats</th>
+            <th>Price Per Day</th>
+            <th>Availability</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var car in Model)
+        {
+            <tr>
+                <td>@car.Type</td>
+                <td>@car.Brand</td>
+                <td>@car.CarModel</td>
+                <td>@car.Mileage</td>
+                <td>@car.FuelType</td>
+                <td>@car.Seats</td>
+                <td>@car.PricePerDay</td>
+                <td>@car.Availability</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@car.CarId" class="btn btn-primary">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
