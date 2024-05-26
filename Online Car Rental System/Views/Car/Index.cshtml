@@ -7,6 +7,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Image</th>
             <th>Type</th>
             <th>Brand</th>
             <th>Model</th>
@@ -22,6 +23,7 @@
         @foreach (var car in Model)
         {
             <tr>
+                <td><img src="@Url.Content("~/" + car.Image)" alt="@car.CarModel" style="width:100px;height:auto;"></td>
                 <td>@car.Type</td>
                 <td>@car.Brand</td>
                 <td>@car.CarModel</td>
