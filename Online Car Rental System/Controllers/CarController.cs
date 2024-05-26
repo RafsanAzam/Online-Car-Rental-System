@@ -62,5 +62,15 @@ namespace Online_Car_Rental_System.Controllers
             _carService.DeleteCar(id);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Details(int id)
+        {
+            var car = _carService.GetCarById(id);
+            if(car == null)
+            {
+                return NotFound();
+            }
+            return View(car);
+        }
     }
 }
