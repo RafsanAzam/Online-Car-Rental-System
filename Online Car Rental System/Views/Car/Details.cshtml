@@ -1,0 +1,71 @@
+﻿@model Online_Car_Rental_System.Models.Car
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+
+<h1>Car Details</h1>
+
+<div>
+    <h4>Car</h4>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Type
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Type
+        </dd>
+        <dt class="col-sm-2">
+            Brand
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Brand
+        </dd>
+        <dt class="col-sm-2">
+            Model
+        </dt>
+        <dd class="col-sm-10">
+            @Model.CarModel
+        </dd>
+        <dt class="col-sm-2">
+            Mileage
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Mileage
+        </dd>
+        <dt class="col-sm-2">
+            Fuel Type
+        </dt>
+        <dd class="col-sm-10">
+            @Model.FuelType
+        </dd>
+        <dt class="col-sm-2">
+            Seats
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Seats
+        </dd>
+        <dt class="col-sm-2">
+            Price Per Day
+        </dt>
+        <dd class="col-sm-10">
+            @Model.PricePerDay
+        </dd>
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Description
+        </dd>
+        <dt class="col-sm-2">
+            Availability
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Availability
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</div>
