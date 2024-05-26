@@ -33,21 +33,31 @@
             </div>
         </nav>
         *@
-        <nav>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white  box-shadow mb-3">
             <div class="container nav-container">
-                <a href="@Url.Action("Index", "Home")" class="logo"><h3>Beg Joker.</h3></a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logoTransparent.png" alt="Online Grocery Store Logo">
+                </a>
+                @if (!ViewData.ContainsKey("HideSearchBox"))
+                {
+                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Search" asp-action="Index" method="get">
+                        <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm">
+                        <button class="btn search-button" type="submit">Search</button>
+                    </form>
+                }
                 <ul class="nav-link">
-                    <li><a href="@Url.Action("Index", "Home")" style="--i:1;" class="active">Home</a></li>
-                    <li><a href="@Url.Action("About", "Home")" style="--i:2;">About</a></li>
-                    <li><a href="@Url.Action("Services", "Home")" style="--i:3;">Services</a></li>
-                    <li><a href="@Url.Action("Featured", "Home")" style="--i:4;">Featured</a></li>
-                    <li><a href="@Url.Action("Contact", "Home")" style="--i:5;">Contact</a></li>
+                    
+                    <li><a href="@Url.Action("Index", "Home")" style="--i:1;">Home</a></li>
+                    <li><a href="@Url.Action("About", "Home")" style="--i:2;">Type</a></li>
+                    <li><a href="@Url.Action("Services", "Home")" style="--i:3;">Brand</a></li>
+                    <li><a href="@Url.Action("Featured", "Home")" style="--i:4;">Reservation</a></li>
+                    <li><a href="@Url.Action("Contact", "Home")" style="--i:5;">Order</a></li>
                 </ul>
-                <ul class="social-link">
-                    <li><a href="#" style="--i:1;"><i class="fab fa-facebook"></i></a></li>
+                <!--</><ul class="social-link">
+                   <li><a href="#" style="--i:1;"><i class="fab fa-facebook"></i></a></li>
                     <li><a href="#" style="--i:2;"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
-                </ul>
+                     <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
+                </ul>-->
             </div>
         </nav>
 

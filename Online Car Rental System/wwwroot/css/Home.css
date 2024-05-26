@@ -137,6 +137,13 @@ nav {
     animation: logoAni 1s ease forwards;
 }
 
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none; /* Remove black dots */
+}
+
 .nav-link li a {
     color: var(--color-black);
     font-size: 17px;
@@ -145,14 +152,17 @@ nav {
     animation: NavliaAni forwards 1s ease;
     animation-delay: calc(.2s * var(--i));
     opacity: 0;
+    text-decoration: none; /* Add this line to remove the underline */
 }
 
     .nav-link li a:hover {
         color: var(--color-primary);
+        text-decoration: none; /* Add this line to remove the underline */
     }
 
 .nav-link li .active {
     color: var(--color-primary);
+    text-decoration: none; /* Add this line to remove the underline */
 }
 
 .social-link li a {
@@ -263,6 +273,9 @@ header {
         animation-delay: 1.6s;
     }
 
+
+
+
 /*.sq-box2 {
     position: absolute;
     width: 700px;
@@ -364,3 +377,42 @@ header {
     }
 }
 /* End Animation */
+
+/* Search Box */
+/* Style for the search form */
+.search-form {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* Pushes the form to the right */
+}
+
+/* Style for the search input */
+.search-input {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem 0 0 0.25rem; /* Rounded corners for the left side */
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+/* Style for the search button */
+.search-button {
+    --bs-btn-line-height: 0.9rem;
+}
+
+    /*.search-button:hover {
+        background-color: #0f567b; /* Darker shade for hover 
+    } */
+
+/* Change the border color on focus for the search input */
+.search-input:focus {
+    border-color: #1789c0;
+}
+
+
+
+.nav-container .search-box {
+    width: 350px; /* Adjust width of the search box */
+    height: 40px;
+}

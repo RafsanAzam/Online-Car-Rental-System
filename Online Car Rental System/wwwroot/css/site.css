@@ -20,3 +20,14 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.navbar-brand img {
+    transition: transform 0.3s ease;
+    Height: 400px; /* adjust if necessary */
+    width: 200px; /* adjust if necessary */
+    object-fit: contain; /* This will make sure the image is fully visible */
+}
+
+    .navbar-brand img:hover {
+        transform: scale(1.1); /* Makes the image 10% larger when hovered */
+    }
