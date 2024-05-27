@@ -6,11 +6,10 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-center mb-0">Available Cars</h2>
-        
-        <button id="toggleViewBtn" class="btn btn-primary">Switch to Grid View</button>
-    </div>
+    </div>   
 
     <div id="gridView" class="d-none">
+       
         <table class="table">
             <thead>
                 <tr>
@@ -48,6 +47,8 @@
         </table>
     </div>
     <div id="cardView" class="row">
+        
+
         @foreach (var car in Model)
         {
             <div class="col-md-4 mb-4">

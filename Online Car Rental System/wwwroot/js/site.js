@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+/*
 $(document).ready(function () {
     console.log("Script is running");
     var gridView = $("#gridView");
@@ -22,3 +23,4 @@ $(document).ready(function () {
         }
     });
 });
+*/
