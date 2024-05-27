@@ -72,5 +72,28 @@ namespace Online_Car_Rental_System.Controllers
             }
             return View(car);
         }
+
+        [HttpGet]
+        public JsonResult GetSuggestions(string query)
+        {
+            var suggestions = _carService.GetSuggestions(query);
+            return Json(suggestions);
+        }
+
+        [HttpGet]
+        public JsonResult GetRecentSearches()
+        {
+            var recentSearches = _carService.GetRecentSearches();
+            return Json(recentSearches);
+        }
+
+        public IActionResult Search(string searchTerm)
+        {
+            var results = _carService.SearchCars(searchTerm);
+            return View("SearchResults", results);
+        }
+
+
+
     }
 }
