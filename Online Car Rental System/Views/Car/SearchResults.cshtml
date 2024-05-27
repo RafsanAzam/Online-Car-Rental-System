@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Online_Car_Rental_System.Models.Car>
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var car in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="@Url.Content("~/" + car.Image)" class="card-img-top" alt="@car.CarModel" style="height: 250px; object-fit:cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@car.CarModel</h5>
+                        <p class="card-text">@car.Brand</p>
+                        <p class="card-text text-muted">@car.PricePerDay.ToString("C")</p>
+                        <a asp-action="Details" asp-route-id="@car.CarId" class="btn btn-primary">Rent</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
