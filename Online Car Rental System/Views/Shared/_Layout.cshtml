@@ -39,7 +39,7 @@
                 </a>
                 @if (!ViewData.ContainsKey("HideSearchBox"))
                 {
-                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Car" asp-action="SearchResults" method="get">
+                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Car" asp-action="Search" method="get">
                         <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm" id="searchInput">
                         <button class="btn search-button" type="submit">Search</button>
                         <div id="searchSuggestions" class="suggestions-box d-none"></div>
