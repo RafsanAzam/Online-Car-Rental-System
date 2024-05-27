@@ -8,9 +8,6 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> <!-- Include home.css -->
     <link rel="stylesheet" href="~/Online_Car_Rental_System.styles.css" asp-append-version="true" />
-   
-    
-
 </head>
 <body>
     <header>
@@ -42,9 +39,10 @@
                 </a>
                 @if (!ViewData.ContainsKey("HideSearchBox"))
                 {
-                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Search" asp-action="Index" method="get">
-                        <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm">
+                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Car" asp-action="SearchResults" method="get">
+                        <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm" id="searchInput">
                         <button class="btn search-button" type="submit">Search</button>
+                        <div id="searchSuggestions" class="suggestions-box d-none"></div>
                     </form>
                 }
                 <ul class="nav-link">
