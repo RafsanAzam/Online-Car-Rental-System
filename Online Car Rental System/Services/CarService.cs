@@ -8,6 +8,7 @@ namespace Online_Car_Rental_System.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly CarJsonService _carJsonService;
+        private static List<string> recentSearches = new List<string>(); // Store recent searches
 
         public CarService(ApplicationDbContext context, CarJsonService carJsonService)
         {
@@ -53,6 +54,15 @@ namespace Online_Car_Rental_System.Services
 
         public List<Car> SearchCars(string keyword)
         {
+            // Add the keyword to recent searches
+            if (!string.IsNullOrWhiteSpace(keyword))
+            {
+                recentSearches.Add(keyword);
+                if (recentSearches.Count > 10)
+                {
+                    recentSearches.RemoveAt(0);
+                }
+            }
             return _context.Cars
                 .Where(c => c.CarModel.Contains(keyword) || c.Brand.Contains(keyword) || c.Type.Contains(keyword)).ToList();
         }
@@ -109,6 +119,23 @@ namespace Online_Car_Rental_System.Services
                 throw new Exception("Error updating car table from json file.", ex);
             }
         }
-        
+
+        public List<string> GetSuggestions(string query)
+        {
+            return _context.Cars
+                .Where(c => c.CarModel.Contains(query) || c.Brand.Contains(query) || c.Type.Contains(query))
+                .Select(c => c.CarModel)
+                .Distinct()
+                .Take(5) // Limit to top 5 suggestions
+                .ToList();
+        }
+
+        public List<string> GetRecentSearches()
+        {
+            return recentSearches
+                .Distinct()
+                .ToList();
+        }
+
     }
 }
