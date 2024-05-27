@@ -1,26 +1,64 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿document.addEventListener("DOMContentLoaded", function () {
+    var searchInput = document.getElementById("searchInput");
+    var suggestionsBox = document.getElementById("searchSuggestions");
 
-// Write your JavaScript code.
+    searchInput.addEventListener("input", function () {
+        var query = searchInput.value;
+        if (query.length === 0) {
+            suggestionsBox.classList.add("d-none");
+            return;
+        }
 
-/*
-$(document).ready(function () {
-    console.log("Script is running");
-    var gridView = $("#gridView");
-    var cardView = $("#cardView");
-    var toggleBtn = $("#toggleViewBtn");
+        fetch(`/Car/GetSuggestions?query=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                suggestionsBox.innerHTML = "";
+                if (data.length > 0) {
+                    data.forEach(item => {
+                        var suggestionItem = document.createElement("div");
+                        suggestionItem.className = "suggestion-item";
+                        suggestionItem.textContent = item;
+                        suggestionItem.addEventListener("click", function () {
+                            searchInput.value = item;
+                            suggestionsBox.classList.add("d-none");
+                        });
+                        suggestionsBox.appendChild(suggestionItem);
+                    });
+                    suggestionsBox.classList.remove("d-none");
+                } else {
+                    suggestionsBox.classList.add("d-none");
+                }
+            });
+    });
 
-    toggleBtn.click(function () {
-        console.log("Button clicked");
-        if (gridView.hasClass("d-none")) {
-            gridView.removeClass("d-none");
-            cardView.addClass("d-none");
-            toggleBtn.text("Switch to Card View");
-        } else {
-            gridView.addClass("d-none");
-            cardView.removeClass("d-none");
-            toggleBtn.text("Switch to Grid View");
+    searchInput.addEventListener("focus", function () {
+        if (searchInput.value.length === 0) {
+            fetch(`/Car/GetRecentSearches`)
+                .then(response => response.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = "";
+                    if (data.length > 0) {
+                        data.forEach(item => {
+                            var suggestionItem = document.createElement("div");
+                            suggestionItem.className = "suggestion-item";
+                            suggestionItem.textContent = item;
+                            suggestionItem.addEventListener("click", function () {
+                                searchInput.value = item;
+                                suggestionsBox.classList.add("d-none");
+                            });
+                            suggestionsBox.appendChild(suggestionItem);
+                        });
+                        suggestionsBox.classList.remove("d-none");
+                    } else {
+                        suggestionsBox.classList.add("d-none");
+                    }
+                });
         }
     });
+
+    searchInput.addEventListener("blur", function () {
+        setTimeout(function () {
+            suggestionsBox.classList.add("d-none");
+        }, 200);
+    });
 });
-*/
