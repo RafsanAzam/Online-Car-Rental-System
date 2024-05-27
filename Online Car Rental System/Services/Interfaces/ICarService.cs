@@ -16,5 +16,8 @@ namespace Online_Car_Rental_System.Services.Interfaces
         // Method to update car table from json file
         void updateCarTableFromJson();
 
+        List<string> GetSuggestions(string query);
+        List<string> GetRecentSearches();
+
     }
 }
