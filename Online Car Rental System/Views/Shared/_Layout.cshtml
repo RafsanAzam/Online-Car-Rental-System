@@ -46,17 +46,32 @@
                     </form>
                 }
                 <ul class="nav-link">
-                    
                     <li><a href="@Url.Action("Index", "Home")" style="--i:1;">Home</a></li>
-                    <li><a href="@Url.Action("About", "Home")" style="--i:2;">Type</a></li>
-                    <li><a href="@Url.Action("Services", "Home")" style="--i:3;">Brand</a></li>
-                    <li><a href="@Url.Action("Featured", "Home")" style="--i:4;">Reservation</a></li>
-                    <li><a href="@Url.Action("Contact", "Home")" style="--i:5;">Order</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="typeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:2;">Type</a>
+                        <div class="dropdown-menu" aria-labelledby="typeDropdown">
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Sedan">Sedan</a>
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Wagon">Wagon</a>
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="SUV">SUV</a>
+                            <!-- Add more types as needed -->
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:3;">Brand</a>
+                        <div class="dropdown-menu" aria-labelledby="brandDropdown">
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Ford">Ford</a>
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Mazda">Mazda</a>
+                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="BMW">BMW</a>
+                            <!-- Add more brands as needed -->
+                        </div>
+                    </li>
+                    <li><a href="@Url.Action("Reservation", "Home")" style="--i:4;">Reservation</a></li>
+                    <li><a href="@Url.Action("Order", "Home")" style="--i:5;">Order</a></li>
                 </ul>
-                <!--</><ul class="social-link">
+                <!--<ul class="social-link">
                    <li><a href="#" style="--i:1;"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="#" style="--i:2;"><i class="fab fa-twitter"></i></a></li>
-                     <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
+                   <li><a href="#" style="--i:2;"><i class="fab fa-twitter"></i></a></li>
+                   <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
                 </ul>-->
             </div>
         </nav>
