@@ -67,18 +67,18 @@ namespace Online_Car_Rental_System.Services
                 .Where(c => c.CarModel.Contains(keyword) || c.Brand.Contains(keyword) || c.Type.Contains(keyword)).ToList();
         }
 
-        public List<Car> GetCarsByCategory(string Category)
+        public List<Car> GetCarsByCategory(string category)
         {
             return _context.Cars
-                .Where(c => c.Type.Equals(Category, System.StringComparison.OrdinalIgnoreCase))
+                .Where(c => c.Type.ToLower() == category.ToLower())
                 .ToList();
         }
 
         public List<Car> GetCarsByBrand(string Brand)
         {
             return _context.Cars
-                .Where(c=> c.Brand.Equals(Brand, System.StringComparison.OrdinalIgnoreCase))
-                .ToList();
+              .Where(c => c.Brand.ToLower() == Brand.ToLower())
+              .ToList();
         }
 
         public void updateCarTableFromJson()

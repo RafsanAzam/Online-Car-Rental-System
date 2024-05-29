@@ -93,7 +93,17 @@ namespace Online_Car_Rental_System.Controllers
             return View("SearchResults", results);
         }
 
+        public IActionResult Type(string type)
+        {
+            var cars = _carService.GetCarsByCategory(type);
+            return View("SearchResults", cars); 
+        }
 
+        public IActionResult Brand(string brand)
+        {
+            var cars = _carService.GetCarsByBrand(brand);
+            return View("SearchResults", cars); 
+        }
 
     }
 }
