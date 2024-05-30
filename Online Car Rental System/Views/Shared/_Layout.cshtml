@@ -94,5 +94,13 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        // Example to save session ID in local storage (if needed)
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!localStorage.getItem("sessionId")) {
+                localStorage.setItem("sessionId", "@Context.Session.Id");
+            }
+        });
+    </script>
 </body>
 </html>
