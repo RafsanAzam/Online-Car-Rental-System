@@ -98,10 +98,26 @@ namespace Online_Car_Rental_System.Controllers
             return View(reservation);
         }
 
+       
+
         public IActionResult Delete(int id)
         {
             _reservationService.DeleteReservation(id);
             return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Recent()
+        {
+            string sessionId = HttpContext.Session.Id; // Get the current session ID
+            var reservation = _reservationService.GetMostRecentUncompletedReservation(sessionId);
+            if (reservation == null)
+            {
+                return RedirectToAction("Create");
+            }
+
+            var car = _carService.GetCarById(reservation.CarId);
+            ViewBag.CarAvailability = car.Availability;
+            return View("Create", reservation);
         }
     }
 }
