@@ -15,13 +15,30 @@ namespace Online_Car_Rental_System.Controllers
             _reservationService = reservationService;
             _carService = carService;
         }
-        
-        public IActionResult Create()
+
+        [HttpGet]
+        [Route("Reservation/Create/{carId}")]
+        public IActionResult Create(int carId)
         {
-            var cars = _carService.GetAllCars();
-            ViewBag.Cars = cars;
-            return View(new ReservationViewModel());
+            var car = _carService.GetCarById(carId);
+            
+            if (car == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new ReservationViewModel
+            {
+                CarId = car.CarId,
+                TotalPrice = car.PricePerDay // Assuming you want to initialize TotalPrice with the car's price per day
+            };
+
+            ViewBag.Car = car; // Pass the car details to the view using ViewBag
+            return View(viewModel);
         }
+
+
+
 
         [HttpPost]
         public IActionResult Create(ReservationViewModel viewModel)
