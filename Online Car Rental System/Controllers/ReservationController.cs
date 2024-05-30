@@ -56,7 +56,9 @@ namespace Online_Car_Rental_System.Controllers
                     RentEndDate = viewModel.RentEndDate,
                     Quantity = viewModel.Quantity,
                     TotalPrice = viewModel.TotalPrice,
-                    Status = "Unconfirmed" // Default status
+                    Status = "Unconfirmed", // Default status
+                    SessionId = HttpContext.Session.Id // Set the SessionId
+
                 };
 
                 _reservationService.AddReservation(reservation);
