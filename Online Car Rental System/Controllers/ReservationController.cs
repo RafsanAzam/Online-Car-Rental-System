@@ -20,18 +20,32 @@ namespace Online_Car_Rental_System.Controllers
         {
             var cars = _carService.GetAllCars();
             ViewBag.Cars = cars;
-            return View();
+            return View(new ReservationViewModel());
         }
 
         [HttpPost]
-        public IActionResult Create(Reservation reservation)
+        public IActionResult Create(ReservationViewModel viewModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
+                var reservation = new Reservation
+                {
+                    CarId = viewModel.CarId,
+                    Name = viewModel.Name,
+                    UserEmail = viewModel.UserEmail,
+                    MobileNumber = viewModel.MobileNumber,
+                    HasValidDriverLicense = viewModel.HasValidDriverLicense,
+                    RentStartDate = viewModel.RentStartDate,
+                    RentEndDate = viewModel.RentEndDate,
+                    Quantity = viewModel.Quantity,
+                    TotalPrice = viewModel.TotalPrice,
+                    Status = "Unconfirmed" // Default status
+                };
+
                 _reservationService.AddReservation(reservation);
                 return RedirectToAction("Details", new { id = reservation.ReservationId });
             }
-            return View(reservation);
+            return View(viewModel);
         }
 
         public IActionResult Edit(int id)
