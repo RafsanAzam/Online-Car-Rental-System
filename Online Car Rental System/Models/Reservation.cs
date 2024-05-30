@@ -15,6 +15,7 @@ namespace Online_Car_Rental_System.Models
         public int Quantity { get; set; }
         public int TotalPrice { get; set; }
         public string Status { get; set; } // New status field
+        public string SessionId { get; set; } // New field for session ID
 
         [ForeignKey("CarId")]
         public Car Car { get; set; }  // Navigation property
