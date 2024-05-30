@@ -1,0 +1,65 @@
+﻿@model Online_Car_Rental_System.Models.ReservationViewModel
+
+@{
+    ViewData["Title"] = "Create Reservation";
+}
+
+<h1>Create Reservation</h1>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CarId" class="control-label"></label>
+        <select asp-for="CarId" class="form-control" asp-items="@(new SelectList(ViewBag.Cars, "CarId", "CarModel"))"></select>
+        <span asp-validation-for="CarId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserEmail" class="control-label"></label>
+        <input asp-for="UserEmail" class="form-control" />
+        <span asp-validation-for="UserEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="MobileNumber" class="control-label"></label>
+        <input asp-for="MobileNumber" class="form-control" />
+        <span asp-validation-for="MobileNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HasValidDriverLicense" class="control-label"></label>
+        <input asp-for="HasValidDriverLicense" type="checkbox" class="form-check-input" />
+        <span asp-validation-for="HasValidDriverLicense" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentStartDate" class="control-label"></label>
+        <input asp-for="RentStartDate" class="form-control" />
+        <span asp-validation-for="RentStartDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RentEndDate" class="control-label"></label>
+        <input asp-for="RentEndDate" class="form-control" />
+        <span asp-validation-for="RentEndDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Quantity" class="control-label"></label>
+        <input asp-for="Quantity" class="form-control" />
+        <span asp-validation-for="Quantity" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TotalPrice" class="control-label"></label>
+        <input asp-for="TotalPrice" class="form-control" readonly />
+        <span asp-validation-for="TotalPrice" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
