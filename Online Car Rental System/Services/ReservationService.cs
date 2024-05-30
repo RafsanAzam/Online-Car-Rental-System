@@ -46,5 +46,13 @@ namespace Online_Car_Rental_System.Services
                 _context.SaveChanges();
             }
         }
+
+        public Reservation GetMostRecentUncompletedReservation(string sessionId)
+        {
+            return _context.Reservations
+                .Where(r => r.SessionId == sessionId && r.Status == "Unconfirmed")
+                .OrderByDescending(r => r.ReservationId)
+                .FirstOrDefault();
+        }
     }
 }
