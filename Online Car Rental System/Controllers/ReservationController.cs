@@ -111,7 +111,7 @@ namespace Online_Car_Rental_System.Controllers
         public IActionResult Recent()
         {
             string sessionId = HttpContext.Session.Id; // Get the current session ID
-            var reservation = _reservationService.GetMostRecentUncompletedReservation(sessionId);
+            var reservation = _reservationService.GetMostRecentUncompletedReservation();
             if (reservation == null)
             {
                 return RedirectToAction("Create");

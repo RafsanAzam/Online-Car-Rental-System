@@ -9,7 +9,7 @@ namespace Online_Car_Rental_System.Services.Interfaces
         void AddReservation(Reservation reservation);
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(int id);
-        Reservation GetMostRecentUncompletedReservation(string sessionId);
+        Reservation GetMostRecentUncompletedReservation();
 
     }
 }
