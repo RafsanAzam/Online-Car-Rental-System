@@ -9,6 +9,7 @@ namespace Online_Car_Rental_System.Controllers
     {
         private readonly IReservationService _reservationService;
         private readonly ICarService _carService;
+        private readonly CarJsonService _carJsonService;
 
         public ReservationController(IReservationService reservationService, ICarService carService)
         {
@@ -148,6 +149,27 @@ namespace Online_Car_Rental_System.Controllers
             var car = _carService.GetCarById(reservation.CarId);
             ViewBag.Car = car;
             return View("Details", reservation);
+        }
+
+        public IActionResult Confirm(int id)
+        {
+            var reservation = _reservationService.GetReservationById(id);
+            if(reservation == null)
+            {
+                return NotFound();
+            }
+            reservation.Status = "Confirmed";
+            _reservationService.UpdateReservation(reservation);
+
+            //Update car Availability
+            var car = _carService.GetCarById(reservation.CarId);
+            car.Quantity -= reservation.Quantity;
+            _carService.UpdateCar(car);
+
+            //Update the car data in JSON
+            _carJsonService.UpdateJsonFile(_carService.GetAllCars());
+            
+            return RedirectToAction("Details", new {id = reservation.ReservationId});   
         }
     }
 }
