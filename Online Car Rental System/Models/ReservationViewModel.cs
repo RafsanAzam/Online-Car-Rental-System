@@ -4,7 +4,7 @@ namespace Online_Car_Rental_System.Models
 {
     public class ReservationViewModel
     {
-        public int? ReservationId { get; }
+        public int? ReservationId { get; set; }
         public int CarId { get; set; }
 
         [Required]
