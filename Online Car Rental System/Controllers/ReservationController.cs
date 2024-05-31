@@ -74,20 +74,48 @@ namespace Online_Car_Rental_System.Controllers
             {
                 return NotFound();
             }
-            var cars = _carService.GetAllCars();
-            ViewBag.Cars = cars;
-            return View(reservation);
+            var viewModel = new ReservationViewModel
+            {
+                ReservationId = reservation.ReservationId,
+                CarId = reservation.CarId,
+                Name = reservation.Name,
+                UserEmail = reservation.UserEmail,
+                MobileNumber = reservation.MobileNumber,
+                HasValidDriverLicense = reservation.HasValidDriverLicense,
+                RentStartDate = reservation.RentStartDate,
+                RentEndDate = reservation.RentEndDate,
+                Quantity = reservation.Quantity,
+                TotalPrice = reservation.TotalPrice
+            };
+            ViewBag.Car = _carService.GetCarById(reservation.CarId); // Pass the car details to the view using ViewBag
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(Reservation reservation)
+        public IActionResult Edit(ReservationViewModel viewModel)
         {
-            if(ModelState.IsValid)
+           if (ModelState.IsValid)
             {
+                var reservation = _reservationService.GetReservationById(viewModel.ReservationId);
+                if(reservation == null)
+                {
+                    return NotFound();
+                }
+
+                reservation.Name = viewModel.Name;
+                reservation.UserEmail = viewModel.UserEmail;
+                reservation.MobileNumber = viewModel.MobileNumber;
+                reservation.HasValidDriverLicense = viewModel.HasValidDriverLicense;
+                reservation.RentStartDate = viewModel.RentStartDate;
+                reservation.RentEndDate = viewModel.RentEndDate;
+                reservation.Quantity = viewModel.Quantity;
+                reservation.TotalPrice = viewModel.TotalPrice;
                 _reservationService.UpdateReservation(reservation);
-                return RedirectToAction("Details", new {id = reservation.ReservationId});
+                return RedirectToAction("Details", new {id= reservation.ReservationId});
             }
-            return View(reservation);
+            ViewBag.Car = _carService.GetCarById(viewModel.CarId); // Pass the car details to the view using ViewBag
+            return View(viewModel);
+
         }
 
         public IActionResult Details(int id)
