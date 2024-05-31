@@ -146,8 +146,8 @@ namespace Online_Car_Rental_System.Controllers
             }
 
             var car = _carService.GetCarById(reservation.CarId);
-            ViewBag.CarAvailability = car.Availability;
-            return View("Create", reservation);
+            ViewBag.Car = car;
+            return View("Details", reservation.ReservationId);
         }
     }
 }
