@@ -386,6 +386,10 @@ header {
     color: #ccc;
 }
 
+.search-box:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.8);
+}
 .suggestions-box {
     position: absolute;
     top: 80%; /* Position below the search box */

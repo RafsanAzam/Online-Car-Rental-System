@@ -39,14 +39,15 @@
     }
 
     // Save search query when input changes
-    searchInput.addEventListener("input", function () {
+   searchInput.addEventListener("input", function () {
         var query = searchInput.value;
         if (query.length === 0) {
             suggestionsBox.classList.add("d-none");
+            displaySearchHistory();
             return;
         }
 
-        saveSearchHistory(query); // New line to save the search query
+       // saveSearchHistory(query); // New line to save the search query
 
         fetch(`/Car/GetSuggestions?query=${query}`)
             .then(response => response.json())

@@ -1,6 +1,8 @@
 ﻿@model Online_Car_Rental_System.Models.ReservationViewModel
 
 @{
+    ViewData["HideSearchBox"] = true;
+    ViewData["HideUL"] = true;
     ViewData["Title"] = "Edit Reservation";
     var car = ViewBag.Car as Online_Car_Rental_System.Models.Car;
 }

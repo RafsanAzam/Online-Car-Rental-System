@@ -2,6 +2,9 @@
 using Online_Car_Rental_System.Models;
 using Online_Car_Rental_System.Services;
 using Online_Car_Rental_System.Services.Interfaces;
+using Newtonsoft.Json;
+
+
 
 namespace Online_Car_Rental_System.Controllers
 {
@@ -23,7 +26,7 @@ namespace Online_Car_Rental_System.Controllers
         public IActionResult Create(int carId)
         {
             var car = _carService.GetCarById(carId);
-            
+
             if (car == null)
             {
                 return NotFound();
@@ -140,7 +143,7 @@ namespace Online_Car_Rental_System.Controllers
 
         public IActionResult Recent()
         {
-            return RedirectToAction("Create");
+            return RedirectToAction("Edit");
         }
 
         public IActionResult Confirm(int id)
