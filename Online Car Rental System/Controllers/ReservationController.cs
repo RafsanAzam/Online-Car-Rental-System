@@ -11,10 +11,11 @@ namespace Online_Car_Rental_System.Controllers
         private readonly ICarService _carService;
         private readonly CarJsonService _carJsonService;
 
-        public ReservationController(IReservationService reservationService, ICarService carService)
+        public ReservationController(IReservationService reservationService, ICarService carService, CarJsonService carJsonService)
         {
             _reservationService = reservationService;
             _carService = carService;
+            _carJsonService = carJsonService;
         }
 
         [HttpGet]
@@ -139,16 +140,7 @@ namespace Online_Car_Rental_System.Controllers
 
         public IActionResult Recent()
         {
-            string sessionId = HttpContext.Session.Id; // Get the current session ID
-            var reservation = _reservationService.GetMostRecentUncompletedReservation();
-            if (reservation == null)
-            {
-                return RedirectToAction("Create");
-            }
-
-            var car = _carService.GetCarById(reservation.CarId);
-            ViewBag.Car = car;
-            return View("Details", reservation);
+            return RedirectToAction("Create");
         }
 
         public IActionResult Confirm(int id)
