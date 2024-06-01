@@ -413,3 +413,13 @@ header {
             background-color: #f0f0f0;
         }
 
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+}
+
+.card-img-top:hover {
+    opacity: 0.8; /* Slightly dim the image */
+    transition: opacity 0.3s; /* Smooth transition */
+}

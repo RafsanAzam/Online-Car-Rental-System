@@ -90,6 +90,10 @@ namespace Online_Car_Rental_System.Controllers
         public IActionResult Search(string searchTerm)
         {
             var results = _carService.SearchCars(searchTerm);
+            if (results == null || !results.Any())
+            {
+                results = _carService.GetAllCars(); // Assuming you have a method to get all cars
+            }
             return View("SearchResults", results);
         }
 
