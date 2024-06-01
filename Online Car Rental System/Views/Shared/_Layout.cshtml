@@ -1,111 +1,111 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>@ViewData["Title"] - Online_Car_Rental_System</title>
-<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> <!-- Include home.css -->
-<link rel="stylesheet" href="~/Online_Car_Rental_System.styles.css" asp-append-version="true" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Online_Car_Rental_System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> <!-- Include home.css -->
+    <link rel="stylesheet" href="~/Online_Car_Rental_System.styles.css" asp-append-version="true" />
 </head>
 <body>
-<header>
-    @*
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header>
+        @*
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online_Car_Rental_System</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online_Car_Rental_System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </nav>
+        *@
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white  box-shadow mb-3">
+            <div class="container nav-container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/logoTransparent.png" alt="Online Grocery Store Logo">
+                </a>
+                @if (!ViewData.ContainsKey("HideSearchBox"))
+                {
+                    <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Car" asp-action="Search" method="get">
+                        <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm" id="searchInput">
+                        <button class="btn search-button" type="submit">Search</button>
+                        <div id="searchSuggestions" class="suggestions-box d-none"></div>
+                    </form>
+                }
+                @if (!ViewData.ContainsKey("HideUL"))
+                {
+                    <ul class="nav-link">
+                        <li><a href="@Url.Action("Index", "Home")" style="--i:1;">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="typeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:2;">Type</a>
+                            <div class="dropdown-menu" aria-labelledby="typeDropdown">
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Sedan">Sedan</a>
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Wagon">Wagon</a>
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="SUV">SUV</a>
+                                <!-- Add more types as needed -->
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:3;">Brand</a>
+                            <div class="dropdown-menu" aria-labelledby="brandDropdown">
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Ford">Ford</a>
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Mazda">Mazda</a>
+                                <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="BMW">BMW</a>
+                                <!-- Add more brands as needed -->
+                            </div>
+                        </li>
+                        <li><a href="@Url.Action("Recent", "Reservation")" style="--i:4;">Reservation</a></li>
+                        <li><a href="@Url.Action("Order", "Home")" style="--i:5;">Order</a></li>
+                    </ul>
+
+                }
+
+                <!--<ul class="social-link">
+                    <li><a href="#" style="--i:1;"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="#" style="--i:2;"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
+                </ul>-->
             </div>
-        </div>
-    </nav>
-    *@
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white  box-shadow mb-3">
-        <div class="container nav-container">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                <img src="~/images/logoTransparent.png" alt="Online Grocery Store Logo">
-            </a>
-            @if (!ViewData.ContainsKey("HideSearchBox"))
-            {
-                <form class="form-inline my-2 my-lg-0 d-flex align-items-center gap-1" asp-controller="Car" asp-action="Search" method="get">
-                    <input class="form-control form-control-sm search-box" type="search" placeholder="Search Cars" aria-label="Search" name="searchTerm" id="searchInput">
-                    <button class="btn search-button" type="submit">Search</button>
-                    <div id="searchSuggestions" class="suggestions-box d-none"></div>
-                </form>
-            }
-            @if  (!ViewData.ContainsKey("HideUL"))
-            {
-                <ul class="nav-link">
-                    <li><a href="@Url.Action("Index", "Home")" style="--i:1;">Home</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="typeDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:2;">Type</a>
-                        <div class="dropdown-menu" aria-labelledby="typeDropdown">
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Sedan">Sedan</a>
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="Wagon">Wagon</a>
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Type" asp-route-type="SUV">SUV</a>
-                            <!-- Add more types as needed -->
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="brandDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="--i:3;">Brand</a>
-                        <div class="dropdown-menu" aria-labelledby="brandDropdown">
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Ford">Ford</a>
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="Mazda">Mazda</a>
-                            <a class="dropdown-item" asp-controller="Car" asp-action="Brand" asp-route-brand="BMW">BMW</a>
-                            <!-- Add more brands as needed -->
-                        </div>
-                    </li>
-                    <li><a href="@Url.Action("Recent", "Reservation")" style="--i:4;">Reservation</a></li>
-                    <li><a href="@Url.Action("Order", "Home")" style="--i:5;">Order</a></li>
-                </ul>
-                    
-            }
-                
-            <!--<ul class="social-link">
-                <li><a href="#" style="--i:1;"><i class="fab fa-facebook"></i></a></li>
-                <li><a href="#" style="--i:2;"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="#" style="--i:3;"><i class="fab fa-instagram"></i></a></li>
-            </ul>-->
-        </div>
-    </nav>
+        </nav>
 
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
-
-<footer class="border-top footer text-muted">
+    </header>
     <div class="container">
-        &copy; 2024 - Online_Car_Rental_System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
-<script>
-    // Example to save session ID in local storage (if needed)
-    document.addEventListener("DOMContentLoaded", function () {
-        if (!localStorage.getItem("sessionId")) {
-            localStorage.setItem("sessionId", "@Context.Session.Id");
-        }
-    });
-</script>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2024 - Online_Car_Rental_System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        // Example to save session ID in local storage (if needed)
+        document.addEventListener("DOMContentLoaded", function () {
+            if (!localStorage.getItem("sessionId")) {
+                localStorage.setItem("sessionId", "@Context.Session.Id");
+            }
+        });
+    </script>
 </body>
 </html>

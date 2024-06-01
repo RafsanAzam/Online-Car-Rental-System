@@ -22,6 +22,11 @@
         var history = loadSearchHistory();
         suggestionsBox.innerHTML = "";
         if (history.length > 0) {
+            //Add a headline for recent search
+            var headline = document.createElement("div");
+            headline.className = "suggestion-headline";
+            headline.textContent = "Recent Searches";
+            suggestionsBox.appendChild(headline);
             history.forEach(function (item) {
                 var suggestionItem = document.createElement("div");
                 suggestionItem.className = "suggestion-item";
@@ -39,7 +44,7 @@
     }
 
     // Save search query when input changes
-   searchInput.addEventListener("input", function () {
+    searchInput.addEventListener("input", function () {
         var query = searchInput.value;
         if (query.length === 0) {
             suggestionsBox.classList.add("d-none");
@@ -47,13 +52,19 @@
             return;
         }
 
-       // saveSearchHistory(query); // New line to save the search query
+        // saveSearchHistory(query); // New line to save the search query
 
         fetch(`/Car/GetSuggestions?query=${query}`)
             .then(response => response.json())
             .then(data => {
                 suggestionsBox.innerHTML = "";
                 if (data.length > 0) {
+                    // Add a headline for suggestions
+                    var headline = document.createElement("div");
+                    headline.className = "suggestion-headline";
+                    headline.textContent = "Suggestions";
+                    suggestionsBox.appendChild(headline);
+
                     data.forEach(item => {
                         var suggestionItem = document.createElement("div");
                         suggestionItem.className = "suggestion-item";
