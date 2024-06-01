@@ -63,4 +63,29 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const pricePerDay = @car.PricePerDay;
+            const quantityInput = document.querySelector("[name='Quantity']");
+            const rentStartDateInput = document.querySelector("[name='RentStartDate']");
+            const rentEndDateInput = document.querySelector("[name='RentEndDate']");
+            const totalPriceInput = document.querySelector("[name='TotalPrice']");
+
+            function calculateTotalPrice() {
+                const quantity = parseInt(quantityInput.value) || 1;
+                const rentStartDate = new Date(rentStartDateInput.value);
+                const rentEndDate = new Date(rentEndDateInput.value);
+                const diffTime = Math.abs(rentEndDate - rentStartDate);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) || 1;
+                const totalPrice = pricePerDay * quantity * diffDays;
+                totalPriceInput.value = totalPrice;
+            }
+
+            quantityInput.addEventListener("input", calculateTotalPrice);
+            rentStartDateInput.addEventListener("change", calculateTotalPrice);
+            rentEndDateInput.addEventListener("change", calculateTotalPrice);
+
+            calculateTotalPrice(); // Initial calculation
+        });
+    </script>
 }
