@@ -423,3 +423,15 @@ header {
     opacity: 0.8; /* Slightly dim the image */
     transition: opacity 0.3s; /* Smooth transition */
 }
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    cursor: not-allowed;
+}
+
+.btn-secondary:hover {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+

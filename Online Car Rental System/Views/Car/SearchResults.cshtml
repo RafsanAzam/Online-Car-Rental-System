@@ -9,8 +9,26 @@
                     <div class="card-body text-center">
                         <h5 class="card-title">@car.CarModel</h5>
                         <p class="card-text">@car.Brand</p>
+                        @if (car.Quantity > 0)
+                        {
+                            <p class="card-text">Available</p>
+                        }
+                        else
+                        {
+                            <p class="card-text">Unavailable</p>
+                        }
+
                         <p class="card-text text-muted">@car.PricePerDay.ToString("C")</p>
-                        <a asp-action="Details" asp-route-id="@car.CarId" class="btn btn-primary">Rent</a>
+                        <a asp-action="Details" asp-route-id="@car.CarId" class="btn btn-primary">Details</a>
+                        @if (car.Quantity > 0)
+                        {
+                            <a asp-action="Create" asp-controller="Reservation" asp-route-id="@car.CarId" class="btn btn-primary">Rent</a>
+                           
+                        }
+                        else
+                        {
+                            <button class="btn btn-secondary" disabled>Rent</button>
+                        }
                     </div>
                 </div>
             </div>

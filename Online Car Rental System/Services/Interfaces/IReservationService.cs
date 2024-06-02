@@ -10,6 +10,7 @@ namespace Online_Car_Rental_System.Services.Interfaces
         void UpdateReservation(Reservation reservation);
         void DeleteReservation(int id);
         Reservation GetMostRecentUncompletedReservation();
+        Task SaveChangesAsync();
 
     }
 }

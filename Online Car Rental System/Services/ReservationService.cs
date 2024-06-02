@@ -55,5 +55,11 @@ namespace Online_Car_Rental_System.Services
                 .FirstOrDefault();
         }
 
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

@@ -48,6 +48,13 @@ namespace Online_Car_Rental_System.Controllers
         [HttpPost]
         public IActionResult Create(ReservationViewModel viewModel)
         {
+            var car = _carService.GetCarById(viewModel.CarId);
+            if(car.Quantity<viewModel.Quantity)
+            {
+                ModelState.AddModelError(string.Empty, "The selected car model is no longer available.");
+                ViewBag.Car = _carService.GetCarById(viewModel.CarId);
+                return View(viewModel);
+            }
             if (ModelState.IsValid)
             {
                 var reservation = new Reservation
@@ -65,6 +72,7 @@ namespace Online_Car_Rental_System.Controllers
                     SessionId = HttpContext.Session.Id // Set the SessionId
 
                 };
+
 
                 _reservationService.AddReservation(reservation);
                 return RedirectToAction("Details", new { id = reservation.ReservationId });
@@ -143,7 +151,16 @@ namespace Online_Car_Rental_System.Controllers
 
         public IActionResult Recent()
         {
-            return RedirectToAction("Edit");
+            string sessionId = HttpContext.Session.Id; // Get the current session ID
+            var reservation = _reservationService.GetMostRecentUncompletedReservation();
+            if (reservation == null)
+            {
+                return RedirectToAction("Create");
+            }
+
+            var car = _carService.GetCarById(reservation.CarId);
+            ViewBag.Car = car;
+            return View("Details", reservation);
         }
 
         public IActionResult Confirm(int id)
@@ -166,5 +183,29 @@ namespace Online_Car_Rental_System.Controllers
             
             return RedirectToAction("Details", new {id = reservation.ReservationId});   
         }
+
+        // GET: Reservation/Cancel
+        public IActionResult Cancel()
+        {
+            // Clear reservation information if necessary
+            // This can be done by clearing session data, if used
+
+            // Redirect to homepage
+            return RedirectToAction("Index", "Home");
+        }
+
+        // GET: Reservation/Confirmation
+        public IActionResult Confirmation(int id)
+        {
+            var reservation = _reservationService.GetReservationById(id);
+            if (reservation == null)
+            {
+                return NotFound();
+            }
+
+            return View(reservation);
+        }
+
+
     }
 }

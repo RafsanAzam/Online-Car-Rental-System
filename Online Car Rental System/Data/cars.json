@@ -8,7 +8,7 @@
     "Mileage": 5000,
     "FuelType": "Petrol",
     "Seats": 5,
-    "Quantity": 3,
+    "Quantity": 7,
     "PricePerDay": 55,
     "Description": "Comfortable and spacious SUV.",
     "Availability": "Available"
@@ -22,7 +22,7 @@
     "Mileage": 3000,
     "FuelType": "Diesel",
     "Seats": 5,
-    "Quantity": 1,
+    "Quantity": 0,
     "PricePerDay": 45,
     "Description": "Stylish and efficient sedan.",
     "Availability": "Available"
@@ -50,7 +50,7 @@
     "Mileage": 7000,
     "FuelType": "Petrol",
     "Seats": 7,
-    "Quantity": 1,
+    "Quantity": 0,
     "PricePerDay": 75,
     "Description": "Large and powerful SUV.",
     "Availability": "Available"
@@ -64,7 +64,7 @@
     "Mileage": 1500,
     "FuelType": "Petrol",
     "Seats": 2,
-    "Quantity": 2,
+    "Quantity": 6,
     "PricePerDay": 90,
     "Description": "Sporty and stylish convertible.",
     "Availability": "Available"
@@ -134,7 +134,7 @@
     "Mileage": 1000,
     "FuelType": "Electric",
     "Seats": 5,
-    "Quantity": 3,
+    "Quantity": 2,
     "PricePerDay": 85,
     "Description": "Innovative and electric sedan.",
     "Availability": "Available"
@@ -176,7 +176,7 @@
     "Mileage": 3000,
     "FuelType": "Petrol",
     "Seats": 5,
-    "Quantity": 3,
+    "Quantity": 2,
     "PricePerDay": 40,
     "Description": "Stylish and comfortable sedan.",
     "Availability": "Available"
@@ -274,7 +274,7 @@
     "Mileage": 2500,
     "FuelType": "Petrol",
     "Seats": 5,
-    "Quantity": 4,
+    "Quantity": 3,
     "PricePerDay": 35,
     "Description": "Economical and comfortable sedan.",
     "Availability": "Available"
@@ -316,7 +316,7 @@
     "Mileage": 1500,
     "FuelType": "Petrol",
     "Seats": 4,
-    "Quantity": 1,
+    "Quantity": 0,
     "PricePerDay": 85,
     "Description": "Stylish and dynamic convertible.",
     "Availability": "Available"
